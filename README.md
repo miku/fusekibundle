@@ -29,6 +29,14 @@ You should have two RPM files available, server and data (named after dataset).
 
 ```
 $ ls
-fusekibundle-server-3.9.0-0.x86_64.rpm
+fusekibundle-3.9.0-0.x86_64.rpm
 fusekibundle-data-ds0-0.1.0.x86_64.rpm
 ```
+
+Install rpm on target:
+
+```
+$ yum install fusekibundle-3.9.0-0.x86_64.rpm
+```
+
+The `Environment=FUSEKI_BASE=/etc/fuseki`. Manage fuseki.service via `systemctl`.
