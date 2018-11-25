@@ -54,6 +54,7 @@ mkdir -p $RPM_BUILD_ROOT/opt/fuseki/webapp/js/lib/mode/sparql
 mkdir -p $RPM_BUILD_ROOT/opt/fuseki/webapp/js/lib/mode/xml
 mkdir -p $RPM_BUILD_ROOT/opt/fuseki/webapp/WEB-INF
 mkdir -p $RPM_BUILD_ROOT/etc/systemd/system/
+mkdir -p $RPM_BUILD_ROOT/etc/fuseki
 install -m 755 fuseki/fuseki-backup $RPM_BUILD_ROOT/opt/fuseki/fuseki-backup
 install -m 644 fuseki/NOTICE $RPM_BUILD_ROOT/opt/fuseki/NOTICE
 install -m 644 fuseki/fuseki.war $RPM_BUILD_ROOT/opt/fuseki/fuseki.war
@@ -396,6 +397,7 @@ rm -rf %%{_topdir}/BUILD/%%{name}
 %dir /opt/fuseki/webapp/js/lib/mode/sparql
 %dir /opt/fuseki/webapp/js/lib/mode/xml
 %dir /opt/fuseki/webapp/WEB-INF
+%%dir /etc/fuseki
 /etc/systemd/system/fuseki.service
 
 
