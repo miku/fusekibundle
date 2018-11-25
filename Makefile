@@ -10,6 +10,7 @@ packaging/rpm/fusekibundle.spec: apache-jena-fuseki-$(VERSION)
 	python rpmutil.py apache-jena-fuseki-$(VERSION) > $@
 
 rpm: packaging/rpm/fusekibundle.spec
+	rm -rf $(HOME)/rpmbuild/BUILD/fuseki # FIXME: where does this come from?
 	mkdir -p $(HOME)/rpmbuild/{BUILD,SOURCES,SPECS,RPMS}
 	cp ./packaging/rpm/$(PKGNAME).spec $(HOME)/rpmbuild/SPECS
 	cp -r apache-jena-fuseki-$(VERSION) $(HOME)/rpmbuild/BUILD
