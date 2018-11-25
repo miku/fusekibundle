@@ -1,4 +1,4 @@
-# fusekibundle
+# fusekibundle (WIP)
 
 One stop deployment of FUSEKI triple store and data.
 
