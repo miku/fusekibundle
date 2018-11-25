@@ -4,7 +4,7 @@
 """USAGE: rpmutil.py DIR
 
 Create spec for a given Apache FUSEKI distribution directory, e.g.
-"apache-jena-3.9.0".
+"apache-jena-fuseki-3.9.0".
 """
 
 from __future__ import print_function
@@ -19,11 +19,11 @@ def main(args):
         print(__doc__, file=sys.stderr)
         sys.exit(1)
 
-    if not re.match("apache-jena-[0-9.]*", args[0]):
-        print("DIR must be of the form apache-jena-VERSION", file=sys.stderr)
+    if not re.match("apache-jena-fuseki-[0-9.]*", args[0]):
+        print("DIR must be of the form apache-jena-fuseki-VERSION", file=sys.stderr)
         sys.exit(1)
 
-    version = args[0].replace("apache-jena-", "")
+    version = args[0].replace("apache-jena-fuseki-", "")
 
     buildroot = "$RPM_BUILD_ROOT/opt"
 
@@ -52,48 +52,30 @@ Inofficial bundle for FUSEKI triple store. More information at: https://jena.apa
 
     dirs = [
         'bin',
-        'src-examples',
-        'src-examples/jena-examples',
-        'src-examples/jena-examples/src',
-        'src-examples/jena-examples/src/main',
-        'src-examples/jena-examples/src/main/java',
-        'src-examples/jena-examples/src/main/java/org',
-        'src-examples/jena-examples/src/main/java/org/apache',
-        'src-examples/jena-examples/src/main/java/org/apache/jena',
-        'src-examples/jena-examples/src/main/java/org/apache/jena/example',
-        'src-examples/jena-examples/src/main/java/org/apache/jena/example/helloworld',
-        'src-examples/jena-examples/src/main/java/org/apache/jena/example/pizza',
-        'src-examples/jena-examples/src/main/resources',
-        'src-examples/jena-examples/src/main/resources/ontologies',
-        'src-examples/jena-examples/src/main/resources/data',
-        'src-examples/jena-examples/src/test',
-        'src-examples/jena-examples/src/test/java',
-        'src-examples/jena-examples/src/test/java/org',
-        'src-examples/jena-examples/src/test/java/org/apache',
-        'src-examples/jena-examples/src/test/java/org/apache/jena_examples',
-        'src-examples/jena-examples/bin',
-        'src-examples/arq',
-        'src-examples/arq/examples',
-        'src-examples/arq/examples/riot',
-        'src-examples/arq/examples/engine',
-        'src-examples/arq/examples/update',
-        'src-examples/arq/examples/constructquads',
-        'src-examples/arq/examples/bgpmatching',
-        'src-examples/arq/examples/propertyfunction',
-        'src-examples/arq/examples/filter',
-        'src-examples/arq/examples/aggregates',
-        'src-examples/data',
-        'src-examples/jena',
-        'src-examples/jena/examples',
-        'src-examples/jena/examples/rdf',
-        'src-examples/jena/examples/ontology',
-        'src-examples/jena/examples/ontology/classHierarchy',
-        'src-examples/jena/examples/ontology/describeClass',
-        'src-examples/tdb',
-        'src-examples/tdb/examples',
-        'lib-src',
-        'lib',
-        'bat',
+        'webapp',
+        'webapp/css',
+        'webapp/images',
+        'webapp/test',
+        'webapp/fonts',
+        'webapp/js',
+        'webapp/js/app',
+        'webapp/js/app/services',
+        'webapp/js/app/controllers',
+        'webapp/js/app/views',
+        'webapp/js/app/models',
+        'webapp/js/app/util',
+        'webapp/js/app/templates',
+        'webapp/js/lib',
+        'webapp/js/lib/plugins',
+        'webapp/js/lib/addon',
+        'webapp/js/lib/addon/fold',
+        'webapp/js/lib/lib',
+        'webapp/js/lib/mode',
+        'webapp/js/lib/mode/turtle',
+        'webapp/js/lib/mode/javascript',
+        'webapp/js/lib/mode/sparql',
+        'webapp/js/lib/mode/xml',
+        'webapp/WEB-INF',
     ]
 
     print('%%install')
@@ -134,7 +116,7 @@ rm -rf %%{_topdir}/BUILD/%%{name}
 
 %%postun
 
-rm -rf /opt/apache-jena-%s
+rm -rf /opt/apache-jena-fuseki-%s
 
 %%changelog
 
