@@ -476,6 +476,11 @@ rm -rf %%{_topdir}/BUILD/%%{name}
 /opt/apache-jena-3.9.0/bat/rdfparse.bat
 /opt/apache-jena-3.9.0/bat/tdb2_tdbdump.bat
 
+
+%postun
+
+rm -rf /opt/apache-jena-3.9.0
+
 %changelog
 
 * Sun Nov 25 2018 Martin Czygan
