@@ -9,6 +9,8 @@ BuildRoot:  %{_tmppath}/%{name}-build
 Group:      System/Base
 Vendor:     Leipzig University Library, https://www.ub.uni-leipzig.de
 URL:        https://github.com/miku/fusekibundle
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+Requires(postun): /usr/sbin/userdel
 
 %description
 
@@ -19,6 +21,10 @@ Inofficial bundle for FUSEKI triple store. More information at: https://jena.apa
 %build
 
 %pre
+
+/usr/bin/getent group fuseki > /dev/null || /usr/sbin/groupadd -r fuseki
+/usr/bin/getent passwd fuseki > /dev/null || /usr/sbin/useradd -r -d /opt/apache-jena-fuseki-3.9.0 -s /sbin/nologin -g fuseki fuseki
+
 
 %%install
 
@@ -47,15 +53,17 @@ mkdir -p $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/webapp/js/lib/mode/javascr
 mkdir -p $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/webapp/js/lib/mode/sparql
 mkdir -p $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/webapp/js/lib/mode/xml
 mkdir -p $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/webapp/WEB-INF
-install -m 644 apache-jena-fuseki-3.9.0/fuseki-backup $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki-backup
+mkdir -p $RPM_BUILD_ROOT/etc/systemd/system/
+install -m 755 apache-jena-fuseki-3.9.0/fuseki-backup $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki-backup
 install -m 644 apache-jena-fuseki-3.9.0/NOTICE $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/NOTICE
 install -m 644 apache-jena-fuseki-3.9.0/fuseki.war $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki.war
 install -m 644 apache-jena-fuseki-3.9.0/fuseki-server.bat $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki-server.bat
+install -m 644 apache-jena-fuseki-3.9.0/fuseki.service $RPM_BUILD_ROOT/etc/systemd/system/fuseki.service
 install -m 644 apache-jena-fuseki-3.9.0/fuseki.service $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki.service
 install -m 644 apache-jena-fuseki-3.9.0/README $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/README
 install -m 644 apache-jena-fuseki-3.9.0/fuseki-server.jar $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki-server.jar
-install -m 644 apache-jena-fuseki-3.9.0/fuseki-server $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki-server
-install -m 644 apache-jena-fuseki-3.9.0/fuseki $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki
+install -m 755 apache-jena-fuseki-3.9.0/fuseki-server $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki-server
+install -m 755 apache-jena-fuseki-3.9.0/fuseki $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/fuseki
 install -m 644 apache-jena-fuseki-3.9.0/LICENSE $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/LICENSE
 install -m 755 apache-jena-fuseki-3.9.0/bin/s-delete $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/bin/s-delete
 install -m 755 apache-jena-fuseki-3.9.0/bin/s-update $RPM_BUILD_ROOT/opt/apache-jena-fuseki-3.9.0/bin/s-update
@@ -209,7 +217,7 @@ rm -rf %%{_tmppath}/%%{name}
 rm -rf %%{_topdir}/BUILD/%%{name}
 
 %%files
-%%defattr(-,root,root)
+%%defattr(-,fuseki,fuseki)
 
 /opt/apache-jena-fuseki-3.9.0/fuseki-backup
 /opt/apache-jena-fuseki-3.9.0/NOTICE
@@ -363,11 +371,13 @@ rm -rf %%{_topdir}/BUILD/%%{name}
 /opt/apache-jena-fuseki-3.9.0/webapp/js/lib/mode/sparql/sparql.js
 /opt/apache-jena-fuseki-3.9.0/webapp/js/lib/mode/xml/xml.js
 /opt/apache-jena-fuseki-3.9.0/webapp/WEB-INF/web.xml
+/etc/systemd/system/fuseki.service
 
 
 %postun
 
 rm -rf /opt/apache-jena-fuseki-3.9.0
+/usr/sbin/userdel fuseki
 
 %changelog
 

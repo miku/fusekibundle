@@ -38,6 +38,8 @@ BuildRoot:  %%{_tmppath}/%%{name}-build
 Group:      System/Base
 Vendor:     Leipzig University Library, https://www.ub.uni-leipzig.de
 URL:        https://github.com/miku/fusekibundle
+Requires(pre): /usr/sbin/useradd, /usr/bin/getent
+Requires(postun): /usr/sbin/userdel
 
 %%description
 
@@ -48,7 +50,11 @@ Inofficial bundle for FUSEKI triple store. More information at: https://jena.apa
 %%build
 
 %%pre
-""" % version)
+
+/usr/bin/getent group fuseki > /dev/null || /usr/sbin/groupadd -r fuseki
+/usr/bin/getent passwd fuseki > /dev/null || /usr/sbin/useradd -r -d /opt/apache-jena-fuseki-%s -s /sbin/nologin -g fuseki fuseki
+
+""" % (version, version))
 
     dirs = [
         'bin',
@@ -83,14 +89,20 @@ Inofficial bundle for FUSEKI triple store. More information at: https://jena.apa
     for dir in dirs:
         print('mkdir -p %s' % (os.path.join(buildroot, args[0], dir)))
 
+    print('mkdir -p $RPM_BUILD_ROOT/etc/systemd/system/')
+
     managed = []
+    binaries = ['fuseki-server', 'fuseki', 'fuseki-backup']
 
     for root, dirs, files in os.walk(args[0]):
         for fn in files:
             path = os.path.join(root, fn)
             managed.append(os.path.join('/opt', path))
 
-            if '/bin/' in path:
+            if fn == 'fuseki.service':
+                print('install -m 644 apache-jena-fuseki-%s/fuseki.service $RPM_BUILD_ROOT/etc/systemd/system/fuseki.service' % (version))
+
+            if '/bin/' in path or fn in binaries:
                 print('install -m 755 %s %s' % (path, os.path.join(buildroot, path)))
             else:
                 print('install -m 644 %s %s' % (path, os.path.join(buildroot, path)))
@@ -105,18 +117,20 @@ rm -rf %%{_tmppath}/%%{name}
 rm -rf %%{_topdir}/BUILD/%%{name}
 
 %%files
-%%defattr(-,root,root)
+%%defattr(-,fuseki,fuseki)
 """)
 
     for name in managed:
         print(name)
 
+    print('/etc/systemd/system/fuseki.service')
 
     print("""
 
 %%postun
 
 rm -rf /opt/apache-jena-fuseki-%s
+/usr/sbin/userdel fuseki
 
 %%changelog
 
