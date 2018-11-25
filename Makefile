@@ -13,6 +13,7 @@ rpm: packaging/rpm/fusekibundle.spec
 	mkdir -p $(HOME)/rpmbuild/{BUILD,SOURCES,SPECS,RPMS}
 	cp ./packaging/rpm/$(PKGNAME).spec $(HOME)/rpmbuild/SPECS
 	cp -r apache-jena-fuseki-$(VERSION) $(HOME)/rpmbuild/BUILD
+	mv $(HOME)/rpmbuild/BUILD/apache-jena-fuseki-$(VERSION) $(HOME)/rpmbuild/BUILD/fuseki
 	./packaging/rpm/buildrpm.sh $(PKGNAME)
 	cp $(HOME)/rpmbuild/RPMS/x86_64/$(PKGNAME)*.rpm .
 
