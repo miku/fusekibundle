@@ -53,3 +53,9 @@ A used `fuseki` is added (and removed when uninstalled). The server can be start
 ```
 
 The configuration directory is `/etc/fuseki`.
+
+----
+
+## SPO.idn
+
+![](output.png)
