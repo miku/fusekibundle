@@ -2,6 +2,19 @@
 
 One stop deployment of FUSEKI triple store server.
 
+## TL;DR
+
+> I have a CentOS box and want a FUSEKI triple store that I want to manage it via `systemctl`.
+
+```
+# yum install -y https://github.com/miku/fusekibundle/releases/download/v3.9.0/fusekibundle-3.9.0-0.x86_64.rpm
+```
+
+----
+
+## Building the RPM
+
+
 ```
 $ git clone https://github.com/miku/fusekibundle.git
 $ cd fusekibundle
