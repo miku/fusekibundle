@@ -5,3 +5,5 @@ apache-jena-*/
 fusekibundle*rpm
 fusekibundle*spec
 .vagrant/*
+data-v0/*
+data-v1/*
