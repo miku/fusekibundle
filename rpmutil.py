@@ -45,7 +45,7 @@ BuildRoot:  %%{_tmppath}/%%{name}-build
 Group:      System/Base
 Vendor:     Leipzig University Library, https://www.ub.uni-leipzig.de
 URL:        https://github.com/miku/fusekibundle
-Requires: java-1.8.0-openjdk
+Requires: java-headless
 Requires(pre): /usr/sbin/useradd, /usr/bin/getent
 Requires(postun): /usr/sbin/userdel
 
