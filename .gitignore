@@ -7,3 +7,5 @@ fusekibundle*spec
 .vagrant/*
 data-v0/*
 data-v1/*
+data-v0.nt.gz
+data-v1.nt.gz
