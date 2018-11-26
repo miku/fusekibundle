@@ -56,6 +56,7 @@ Inofficial bundle for FUSEKI triple store. More information at: https://jena.apa
 
 """ % (version))
 
+    # find apache-jena-fuseki-3.9.0 -type d | cut -d '/' -f2- | tail +2
     dirs = [
         'bin',
         'webapp',
