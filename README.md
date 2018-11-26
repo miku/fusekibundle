@@ -1,4 +1,4 @@
-# fusekibundle (WIP)
+# fusekibundle
 
 One stop deployment of FUSEKI triple store server.
 
