@@ -3,8 +3,15 @@
 
 """USAGE: rpmutil.py DIR
 
-Create spec for a given Apache FUSEKI distribution directory, e.g.
-"apache-jena-fuseki-3.9.0".
+Create an RPM spec[1] for a given Apache FUSEKI distribution directory (e.g.
+apache-jena-fuseki-3.9.0) which can be obtained from
+https://jena.apache.org/download/index.cgi.
+
+This is run from Makefile, where you have to set the VERSION to match the
+downloaded version.
+
+[1] https://rpm-packaging-guide.github.io/
+
 """
 
 from __future__ import print_function

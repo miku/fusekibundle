@@ -1,3 +1,7 @@
+# (1) Download FUSEKI distribution, e.g. from https://is.gd/UZpXpf
+# (2) Extract.
+# (3) Adjust VERSION to match downloaded version.
+# (4) Run: make rpm
 SHELL = /bin/bash
 
 PKGNAME = fusekibundle
