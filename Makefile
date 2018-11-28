@@ -13,6 +13,7 @@ rpm: packaging/rpm/fusekibundle.spec
 	cp ./packaging/rpm/$(PKGNAME).spec $(HOME)/rpmbuild/SPECS
 	cp -r apache-jena-fuseki-$(VERSION) $(HOME)/rpmbuild/BUILD
 	mv $(HOME)/rpmbuild/BUILD/apache-jena-fuseki-$(VERSION) $(HOME)/rpmbuild/BUILD/fuseki
+	cp jetty-web.xml $(HOME)/rpmbuild/BUILD/fuseki/webapp/WEB-INF
 	./packaging/rpm/buildrpm.sh $(PKGNAME)
 	cp $(HOME)/rpmbuild/RPMS/x86_64/$(PKGNAME)*.rpm .
 
