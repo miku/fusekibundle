@@ -2,7 +2,7 @@
 Summary:    Inofficial bundle for FUSEKI triple store.
 Name:       fusekibundle
 Version:    3.9.0
-Release:    0
+Release:    1
 License:    Apache Version 2.0
 ExclusiveArch:  x86_64
 BuildRoot:  %{_tmppath}/%{name}-build
