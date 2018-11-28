@@ -56,6 +56,18 @@ The configuration directory is `/etc/fuseki`.
 
 ----
 
+## SPARQL examples
+
+```sql
+SELECT ?s ?p ?o
+WHERE {
+    ?s ?p ?o .
+}
+LIMIT 10
+```
+
+----
+
 ## SPO.idn
 
 ![](output.png)
