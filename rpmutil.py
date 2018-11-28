@@ -38,7 +38,7 @@ def main(args):
 Summary:    Inofficial bundle for FUSEKI triple store.
 Name:       fusekibundle
 Version:    %s
-Release:    0
+Release:    1
 License:    Apache Version 2.0
 ExclusiveArch:  x86_64
 BuildRoot:  %%{_tmppath}/%%{name}-build
