@@ -208,6 +208,7 @@ install -m 644 fuseki/webapp/js/lib/mode/turtle/turtle.js $RPM_BUILD_ROOT/opt/fu
 install -m 644 fuseki/webapp/js/lib/mode/javascript/javascript.js $RPM_BUILD_ROOT/opt/fuseki/webapp/js/lib/mode/javascript/javascript.js
 install -m 644 fuseki/webapp/js/lib/mode/sparql/sparql.js $RPM_BUILD_ROOT/opt/fuseki/webapp/js/lib/mode/sparql/sparql.js
 install -m 644 fuseki/webapp/js/lib/mode/xml/xml.js $RPM_BUILD_ROOT/opt/fuseki/webapp/js/lib/mode/xml/xml.js
+install -m 644 fuseki/webapp/WEB-INF/jetty-web.xml $RPM_BUILD_ROOT/opt/fuseki/webapp/WEB-INF/jetty-web.xml
 install -m 644 fuseki/webapp/WEB-INF/web.xml $RPM_BUILD_ROOT/opt/fuseki/webapp/WEB-INF/web.xml
 
 %%post
@@ -372,6 +373,7 @@ rm -rf %%{_topdir}/BUILD/%%{name}
 /opt/fuseki/webapp/js/lib/mode/javascript/javascript.js
 /opt/fuseki/webapp/js/lib/mode/sparql/sparql.js
 /opt/fuseki/webapp/js/lib/mode/xml/xml.js
+/opt/fuseki/webapp/WEB-INF/jetty-web.xml
 /opt/fuseki/webapp/WEB-INF/web.xml
 %dir /opt/fuseki/bin
 %dir /opt/fuseki/webapp

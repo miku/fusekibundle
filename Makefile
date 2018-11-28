@@ -13,7 +13,6 @@ rpm: packaging/rpm/fusekibundle.spec
 	cp ./packaging/rpm/$(PKGNAME).spec $(HOME)/rpmbuild/SPECS
 	cp -r apache-jena-fuseki-$(VERSION) $(HOME)/rpmbuild/BUILD
 	mv $(HOME)/rpmbuild/BUILD/apache-jena-fuseki-$(VERSION) $(HOME)/rpmbuild/BUILD/fuseki
-	cp jetty-web.xml $(HOME)/rpmbuild/BUILD/fuseki/webapp/WEB-INF
 	./packaging/rpm/buildrpm.sh $(PKGNAME)
 	cp $(HOME)/rpmbuild/RPMS/x86_64/$(PKGNAME)*.rpm .
 
@@ -21,6 +20,7 @@ apache-jena-fuseki-$(VERSION):
 	echo "Download from https://jena.apache.org/download/index.cgi"
 
 packaging/rpm/fusekibundle.spec: apache-jena-fuseki-$(VERSION)
+	cp jetty-web.xml apache-jena-fuseki-$(VERSION)/webapp/WEB-INF
 	python rpmutil.py apache-jena-fuseki-$(VERSION) > $@
 
 
