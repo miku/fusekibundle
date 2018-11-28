@@ -3,7 +3,6 @@ apache-jena-*.zip
 apache-jena-*.tar.gz
 apache-jena-*/
 fusekibundle*rpm
-fusekibundle*spec
 .vagrant/*
 data-v0/*
 data-v1/*
