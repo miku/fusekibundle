@@ -10,9 +10,7 @@ One stop deployment of FUSEKI triple store server.
 # yum install https://github.com/miku/fusekibundle/releases/download/v3.9.0-1/fusekibundle-3.9.0-1.x86_64.rpm
 ```
 
-Then:
-
-Configure datasets under `/etc/fuseki/configuration/my-dataset.ttl` and run:
+Then, configure datasets under `/etc/fuseki/configuration/my-dataset.ttl` and run:
 
 ```
 # systemctl fuseki start
