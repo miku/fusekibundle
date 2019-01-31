@@ -38,7 +38,7 @@ def main(args):
 Summary:    Inofficial bundle for FUSEKI triple store.
 Name:       fusekibundle
 Version:    %s
-Release:    1
+Release:    0
 License:    Apache Version 2.0
 ExclusiveArch:  x86_64
 BuildRoot:  %%{_tmppath}/%%{name}-build
@@ -68,29 +68,29 @@ Inofficial bundle for FUSEKI triple store. More information at: https://jena.apa
     dirs = [
         'bin',
         'webapp',
+        'webapp/WEB-INF',
         'webapp/css',
-        'webapp/images',
-        'webapp/test',
         'webapp/fonts',
+        'webapp/images',
         'webapp/js',
         'webapp/js/app',
-        'webapp/js/app/services',
         'webapp/js/app/controllers',
-        'webapp/js/app/views',
         'webapp/js/app/models',
-        'webapp/js/app/util',
+        'webapp/js/app/services',
         'webapp/js/app/templates',
+        'webapp/js/app/util',
+        'webapp/js/app/views',
         'webapp/js/lib',
-        'webapp/js/lib/plugins',
         'webapp/js/lib/addon',
         'webapp/js/lib/addon/fold',
         'webapp/js/lib/lib',
         'webapp/js/lib/mode',
-        'webapp/js/lib/mode/turtle',
         'webapp/js/lib/mode/javascript',
         'webapp/js/lib/mode/sparql',
+        'webapp/js/lib/mode/turtle',
         'webapp/js/lib/mode/xml',
-        'webapp/WEB-INF',
+        'webapp/js/lib/plugins',
+        'webapp/test',
     ]
 
     print('%%install')
