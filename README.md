@@ -13,7 +13,7 @@ One stop deployment of FUSEKI triple store server.
 Then, configure datasets under `/etc/fuseki/configuration/my-dataset.ttl` and run:
 
 ```
-# systemctl fuseki start
+# systemctl start fuseki
 ```
 
 ----
