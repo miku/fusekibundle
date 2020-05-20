@@ -5,7 +5,7 @@
 SHELL = /bin/bash
 
 PKGNAME = fusekibundle
-VERSION = 3.14.0
+VERSION = 3.15.0
 
 rpm: packaging/rpm/fusekibundle.spec
 	rm -rf $(HOME)/rpmbuild/BUILD/fuseki # FIXME: where does this come from?
