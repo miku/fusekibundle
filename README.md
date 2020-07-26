@@ -30,8 +30,8 @@ $ cd fusekibundle
 Download a Apache Fuseki distribution:
 
 ```
-$ wget http://ftp.halifax.rwth-aachen.de/apache/jena/binaries/apache-jena-3.16.0.tar.gz
-$ tar xvzf apache-jena-3.16.0.tar.gz
+$ wget http://apache.mirror.iphh.net/jena/binaries/apache-jena-fuseki-3.16.0.tar.gz
+$ tar xvzf apache-jena-fuseki-3.16.0.tar.gz
 ```
 
 Create an RPM for FUSEKI. For this step, you will have to have `rpm` installed on the machine.
