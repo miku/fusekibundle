@@ -50,7 +50,7 @@ fusekibundle-3.15.0-1.x86_64.rpm
 Copy and install rpm on target:
 
 ```
-$ yum install fusekibundle-3.15.0-1.x86_64.rpm
+# yum install fusekibundle-3.15.0-1.x86_64.rpm
 ```
 
 A used `fuseki` is added (and removed when uninstalled). The server can be started with:
