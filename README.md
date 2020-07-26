@@ -8,7 +8,7 @@ One stop deployment of FUSEKI triple store server.
 
 ```
 # yum install \
-    https://github.com/miku/fusekibundle/releases/download/v3.15.0-1/fusekibundle-3.15.0-1.x86_64.rpm
+   https://github.com/miku/fusekibundle/releases/download/v3.15.0-1/fusekibundle-3.15.0-1.x86_64.rpm
 ```
 
 Then, configure datasets under `/etc/fuseki/configuration/my-dataset.ttl` and run:
